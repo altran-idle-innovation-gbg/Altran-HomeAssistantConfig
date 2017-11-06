@@ -1,0 +1,2 @@
+# Altran-HomeAssistantConfig
+Homeassistant configuration
