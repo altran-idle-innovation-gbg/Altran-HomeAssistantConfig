@@ -49,6 +49,9 @@ history:
 # View all events in a logbook
 logbook:
 
+logger: 
+  default: info
+
 # Enables a map showing the location of tracked devices
 map:
 
@@ -58,7 +61,12 @@ sensor:
     command: "python3 /home/homeassistant/.homeassistant/pythonscripts/readTemp.py"
     unit_of_measurement: "°C"
     value_tamplate: '{{value}}'
-    scan_interval: 10
+    scan_interval: 30
+  - platform: time_date
+    display_options:
+      - "date"
+      - "time"
+      - "time_utc"
 
 switch: 
   - platform: rpi_gpio 

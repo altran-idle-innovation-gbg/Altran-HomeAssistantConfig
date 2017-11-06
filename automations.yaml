@@ -16,38 +16,62 @@
     - service: switch.turn_off
       entity_id: switch.led_power_switch
 
-- alias: 'test'
+- alias: 'Time and temp at Altran Foajé'
   trigger:
     - platform: state
       entity_id: input_boolean.run_automation_test
   action:   
     - service: script.sonos_say
+      data_template:
+        sonos_entity: media_player.altran_foaje
+        volume: 0.3
+        message: "Time is now {{ states.sensor.time.state }} and the temperature inside is {{ states.sensor.temperature.state }} degrees"
+        delay: '00:00:15'
+
+- alias: 'Time and temp at play_and_you_di3'
+  trigger:
+    - platform: state
+      entity_id: input_boolean.run_automation_test
+  action:   
+    - service: script.sonos_say
+      data_template:
+        sonos_entity: media_player.play_and_you_di3
+        volume: 0.3
+        message: "Time is now {{ states.sensor.time.state }} and the temperature inside is {{ states.sensor.temperature.state }} degrees"
+        delay: '00:00:15'
+
+- alias: 'Time and temp at backstrom_boys'
+  trigger:
+    - platform: state
+      entity_id: input_boolean.run_automation_test
+  action:   
+    - service: script.sonos_say
+      data_template:
+        sonos_entity: media_player.backstrom_boys
+        volume: 0.3
+        message: "Time is now {{ states.sensor.time.state }} and the temperature inside is {{ states.sensor.temperature.state }} degrees"
+        delay: '00:00:15'
+
+- alias: 'Time 2'
+  trigger:
+    - platform: time
+      at: '11:02:00'
+  action:
+    - service: script.sonos_say
       data:
         sonos_entity: media_player.altran_foaje
         volume: 0.5
-        message: 'Dance dance dance'
+        message: 'Time is now 11 02'
         delay: '00:00:15'
 
 - alias: 'Time 1'
   trigger:
     - platform: time
-      at: '10:38:00'
+      at: '12:12:00'
   action:
     - service: script.sonos_say
       data:
         sonos_entity: media_player.altran_foaje
         volume: 0.5
-        message: 'Time is now 10 38'
-        delay: '00:00:30'
-
-- alias: 'Time 1 YTC'
-  trigger:
-    - platform: time
-      at: '09:38:00'
-  action:
-    - service: script.sonos_say
-      data:
-        sonos_entity: media_player.altran_foaje
-        volume: 0.5
-        message: 'Time is now 10 38'
-        delay: '00:00:30'
+        message: 'Time is now 12 12'
+        delay: '00:00:15'
