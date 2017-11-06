@@ -1,0 +1,53 @@
+- alias: 'Turn on Led Power when temp exceeds 23 celsius'
+  trigger:
+    platform: numeric_state
+    entity_id: sensor.dht_sensor_temperature
+    above: 23
+  action:
+    - service: switch.turn_on
+      entity_id: switch.led_power_switch
+
+- alias: 'Turn off Led Power when temp drops below 24 celsius'
+  trigger:
+    platform: numeric_state
+    entity_id: sensor.dht_sensor_temperature
+    below: 24
+  action:
+    - service: switch.turn_off
+      entity_id: switch.led_power_switch
+
+- alias: 'test'
+  trigger:
+    - platform: state
+      entity_id: input_boolean.run_automation_test
+  action:   
+    - service: script.sonos_say
+      data:
+        sonos_entity: media_player.altran_foaje
+        volume: 0.5
+        message: 'Dance dance dance'
+        delay: '00:00:15'
+
+- alias: 'Time 1'
+  trigger:
+    - platform: time
+      at: '10:38:00'
+  action:
+    - service: script.sonos_say
+      data:
+        sonos_entity: media_player.altran_foaje
+        volume: 0.5
+        message: 'Time is now 10 38'
+        delay: '00:00:30'
+
+- alias: 'Time 1 YTC'
+  trigger:
+    - platform: time
+      at: '09:38:00'
+  action:
+    - service: script.sonos_say
+      data:
+        sonos_entity: media_player.altran_foaje
+        volume: 0.5
+        message: 'Time is now 10 38'
+        delay: '00:00:30'
